@@ -14,6 +14,8 @@
 
 
 import requests
+from colorama import Fore, Back, Style
+
 
 try:
     host = "https://api.gateio.ws"
@@ -25,16 +27,16 @@ try:
     r = requests.request('GET', host + prefix + url + "?" + query_param, headers=headers)
     data = r.json()
     try:
-        print(f"Данные об ордерах на покупку БТЦ(цена,объем):  {data['asks']}")
-        print(f"Данные об ордерах на продажу БТЦ(цена,объем):  {data['bids']}")
+        print(Fore.GREEN + f"Данные об ордерах на покупку БТЦ(цена,объем):  {data['asks']}")
+        print(Fore.GREEN + f"Данные об ордерах на продажу БТЦ(цена,объем):  {data['bids']}")
         print()
         print()
     except KeyError:
-        print(f"Проверте правильность запрашиваемого эллемента")
+        print(Fore.RED +f"Проверте правильность запрашиваемого эллемента")
         print()
         print()
 except requests.exceptions.ConnectionError:
-    print(f"Ошибка соединения, проверте подключение или адрес запроса- {host}")
+    print(Fore.RED +f"Ошибка соединения, проверте подключение или адрес запроса- {host}")
 
 # ЗАПРОС ДЛЯ ETH/USDT
 
@@ -50,14 +52,14 @@ try:
     r = requests.request('GET', host + prefix + url + "?" + query_param, headers=headers)
     data = r.json()
     try:
-        print(f"Данные об ордерах на покупку ETH(цена,объем): {data['asks']}")
-        print(f"Данные об ордерах на продажу ETH(цена,объем): {data['bids']}")
+        print(Fore.GREEN + f"Данные об ордерах на покупку ETH(цена,объем): {data['asks']}")
+        print(Fore.GREEN + f"Данные об ордерах на продажу ETH(цена,объем): {data['bids']}")
         print()
         print()
     except KeyError:
-        print(f"Проверте правильность запрашиваемого эллемента")
+        print(Fore.RED + f"Проверте правильность запрашиваемого эллемента")
 except requests.exceptions.ConnectionError:
-    print(f"Ошибка соединения, проверте подключение или адрес запроса- {host}")
+    print(Fore.RED +f"Ошибка соединения, проверте подключение или адрес запроса- {host}")
 
 # ЗАПРОС ДЛЯ SOL/USDT
 
@@ -71,11 +73,11 @@ try:
     r = requests.request('GET', host + prefix + url + "?" + query_param, headers=headers)
     data = r.json()
     try:
-        print(f"Данные об ордерах на покупку SOL(цена,объем): {data['asks']}")
-        print(f"Данные об ордерах на продажу SOL(цена,объем): {data['bids']}")
+        print(Fore.GREEN + f"Данные об ордерах на покупку SOL(цена,объем): {data['asks']}")
+        print(Fore.GREEN + f"Данные об ордерах на продажу SOL(цена,объем): {data['bids']}")
         print()
         print()
     except KeyError:
-        print(f"Проверте правильность запрашиваемого эллемента")
+        print(Fore.RED +f"Проверте правильность запрашиваемого эллемента")
 except requests.exceptions.ConnectionError:
-    print(f"Ошибка соединения, проверте подключение или адрес запроса- {host}")
+    print(Fore.RED +f"Ошибка соединения, проверте подключение или адрес запроса- {host}")
